@@ -4,7 +4,7 @@ import Header from "../components/layouts/Header"
 export default function Home() {
  
   return (
-    <div className="rootApp">
+    <div className="p-2">
      <Header/>
     </div>
   )
