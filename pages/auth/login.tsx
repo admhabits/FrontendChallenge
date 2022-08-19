@@ -21,7 +21,7 @@ export default function login() {
   }
   return (
     <div className={Styles.container}>
-        <main>
+        <main className='bg-green'>
             <div className="card p-2" style={{ width: "18rem;" }}>
                 <div className="card-body bg-dark rounded">
                     <h5 className="card-title text-center mb-3 text-white">Login</h5>
