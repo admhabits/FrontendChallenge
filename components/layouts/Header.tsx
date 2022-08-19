@@ -20,7 +20,7 @@ export default function Header({title} : any) {
         </li>
       </ul>  
     </div>
-    <div className='row'>
+      <div className='row'>
         <div className='col-md-12'>
           <h4 className='heading text-center text-primary p-3'>{title}</h4>
         </div>
