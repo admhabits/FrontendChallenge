@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router"
 
-export default function Header() {
+export default function Header({title} : any) {
     const router = useRouter();
   return (
+    <>
     <div>
     <ul className="nav nav-tabs">
         <li className="nav-item">
@@ -19,5 +20,11 @@ export default function Header() {
         </li>
       </ul>  
     </div>
+    <div className='row'>
+        <div className='col-md-12'>
+          <h4 className='heading text-center text-primary p-3'>{title}</h4>
+        </div>
+      </div>
+    </>
   )
 }
