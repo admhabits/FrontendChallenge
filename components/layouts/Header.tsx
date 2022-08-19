@@ -25,6 +25,7 @@ export default function Header({title} : any) {
           <h4 className='heading text-center text-primary p-3'>{title}</h4>
         </div>
       </div>
+      <div className="account bg-primary">Akun Saya</div>
     </>
   )
 }

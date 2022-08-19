@@ -14,3 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.account {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: blanchedalmond;
+  color: white;
+  padding: 12.5px;
+  cursor: pointer;
+}
