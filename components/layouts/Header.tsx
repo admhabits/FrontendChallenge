@@ -26,7 +26,7 @@ export default function Header({title} : any) {
           <input type="search" placeholder="Search..." className="form-control" style={{ width: '300px' }}/>
           )
       }
-          <button type="button" className="btn btn-primary btn-sm active px-3">Sign Out</button>
+          <button type="button" className="btn btn-primary btn-sm active px-3">Logout</button>
       </div>
       <div className='row'>
         <div className='col-md-12 d-flex justify-content-start'>
