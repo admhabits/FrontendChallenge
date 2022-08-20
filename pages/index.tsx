@@ -5,7 +5,7 @@ export default function Home() {
  
   return (
     <div className="container mt-2 p-3">
-      <Header title="Semua Konten"/>
+      <Header title="Semua Postingan"/>
       <div className="row">
         <div className="col-md-6 col-sm-12 col-lg-4 mb-lg-4 mb-md-3 mb-sm-2">
             <div className="card">

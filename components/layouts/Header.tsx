@@ -6,7 +6,7 @@ export default function Header({title} : any) {
   return (
     <>
     <div>
-    <ul className="nav nav-tabs">
+    <ul className="nav nav-tabs p-2 rounded">
         <li className="nav-item">
           <Link href="/">
             <a className={`nav-link ${router.pathname == "/" ? "active" : ""}`}>My Blogs</a>
@@ -20,8 +20,13 @@ export default function Header({title} : any) {
         </li>
       </ul>  
     </div>
-      <div className="account bg-primary mb-2 mt-2 d-flex justify-content-end">
-        <button type="button" className="btn btn-primary btn-sm active px-3">Sign Out</button>
+      <div className="account mb-2 mt-1 d-flex justify-content-end rounded gap-2">
+      {
+          router.pathname == "/" && (
+          <input type="search" placeholder="Search..." className="form-control" style={{ width: '300px' }}/>
+          )
+      }
+          <button type="button" className="btn btn-primary btn-sm active px-3">Sign Out</button>
       </div>
       <div className='row'>
         <div className='col-md-12 d-flex justify-content-start'>
