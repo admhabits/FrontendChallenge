@@ -26,7 +26,7 @@ export default function Header({title} : any) {
         </div>
       </div>
       <div className="account bg-primary">
-        <button type="button" className="btn btn-primary">Keluar</button>
+        <button type="button" className="btn btn-primary btn-sm active px-3">Keluar</button>
       </div>
     </>
   )

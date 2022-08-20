@@ -4,8 +4,41 @@ import Header from "../components/layouts/Header"
 export default function Home() {
  
   return (
-    <div className="p-2">
+    <div className="container mt-2">
       <Header title="Semua Konten"/>
+      <div className="row">
+        <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+          <div className="card">
+            <div className="card-header">Judul Postingan</div>
+            <div className="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, molestias.</div>
+          </div>
+        </div>
+        
+        <div className="col-md-6 col-sm-12 col-lg-4 mb-3">
+          <div className="card">
+            <div className="card-header">Judul Postingan</div>
+            <div className="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, molestias.</div>
+          </div>
+        </div>
+        <div className="col-md-6 col-sm-12 col-lg-4 mb-3">
+          <div className="card">
+            <div className="card-header">Judul Postingan</div>
+            <div className="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, molestias.</div>
+          </div>
+        </div>
+        <div className="col-md-6 col-sm-12 col-lg-4 mb-3">
+          <div className="card">
+            <div className="card-header">Judul Postingan</div>
+            <div className="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, molestias.</div>
+          </div>
+        </div>
+        <div className="col-md-6 col-sm-12 col-lg-4 mb-3">
+          <div className="card">
+            <div className="card-header">Judul Postingan</div>
+            <div className="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, molestias.</div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
