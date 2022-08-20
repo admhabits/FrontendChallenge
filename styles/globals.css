@@ -16,11 +16,10 @@ a {
 }
 
 .account {
-  position: absolute;
-  right: 0;
-  top: 0;
+  position: sticky;
   background-color: blanchedalmond;
   color: white;
   padding: 8px 10px;
   cursor: pointer;
+  /* border-radius: 8px; */
 }

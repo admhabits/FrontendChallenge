@@ -4,7 +4,7 @@ import Header from "../components/layouts/Header"
 export default function Home() {
  
   return (
-    <div className="container mt-2">
+    <div className="container mt-2 p-3">
       <Header title="Semua Konten"/>
       <div className="row">
         <div className="col-md-6 col-sm-12 col-lg-4 mb-lg-4 mb-md-3 mb-sm-2">

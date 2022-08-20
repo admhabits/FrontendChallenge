@@ -20,14 +20,15 @@ export default function Header({title} : any) {
         </li>
       </ul>  
     </div>
+      <div className="account bg-primary mb-2 mt-2 d-flex justify-content-end">
+        <button type="button" className="btn btn-primary btn-sm active px-3">Sign Out</button>
+      </div>
       <div className='row'>
-        <div className='col-md-12'>
-          <h4 className='heading text-center text-primary p-3'>{title}</h4>
+        <div className='col-md-12 d-flex justify-content-start'>
+          <h4 className='heading text-center text-primary py-3'>{title}</h4>
         </div>
       </div>
-      <div className="account bg-primary">
-        <button type="button" className="btn btn-primary btn-sm active px-3">Keluar</button>
-      </div>
+     
     </>
   )
 }
