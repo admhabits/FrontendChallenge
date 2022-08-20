@@ -1,5 +1,5 @@
 import { database } from "../services/FirebaseConfig"
-import { collection, getDocs, query, where } from "firebase/firestore"
+import { collection, getDocs, query, where, doc, deleteDoc } from "firebase/firestore"
 import Header from "../components/layouts/Header"
 import { useEffect, useState } from "react";
 
@@ -26,6 +26,17 @@ export default function Home() {
     }
  }
 
+ const deleteBlog = async (id : any) => {
+  try {
+      const deletebyId = await deleteDoc(doc(database, 'blogs', id));
+      // console.log(deletebyId);
+      getPosts();
+
+  } catch (error) {
+    alert(error)
+  }
+ }
+
  useEffect(() => {
     getPosts();
  }, [])
@@ -44,12 +55,12 @@ export default function Home() {
         }
        {
          blogs.length !== 0 && blogs.map((item, key) => (
-          <div className="col-md-6 col-sm-12 col-lg-4 mb-lg-4 mb-md-3 mb-sm-2">
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-lg-4 mb-md-3 mb-sm-2" key={key}>
           <div className="card">
             <div className="card-header">{item?.title}</div>
             <div className="card-body">{item?.desc.length >= 100 ? item.desc.slice(0, 120) + "...": item.desc}</div>
             <div className="card-footer d-flex justify-content-end gap-2">
-              <button className="btn btn-sm btn-danger">Remove</button>
+              <button className="btn btn-sm btn-danger" onClick={ () => deleteBlog(item?.id)}>Remove</button>
               <button className="btn btn-sm btn-warning">Edit</button>
               <button className="btn btn-sm btn-primary">Read More</button>
             </div>
