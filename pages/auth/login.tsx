@@ -48,7 +48,8 @@ export default function login() {
                     </form>
                 </div>
                 <div className='card-footer mt-2 bg-white shadow'>
-                <button onClick={handleOnclick} className="btn btn-sm btn-primary" style={{ float: 'right' }}>Submit</button>
+                <a href="/auth/register" className="btn btn-sm btn-secondary" style={{ float: 'left' }}>Sign Up</a>
+                <button onClick={handleOnclick} className="btn btn-sm btn-primary" style={{ float: 'right' }}>Login</button>
                 </div>
             </div>
         </main>
