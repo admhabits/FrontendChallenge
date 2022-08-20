@@ -2,6 +2,7 @@ import { database } from "../services/FirebaseConfig"
 import { collection, getDocs, query, where, doc, deleteDoc } from "firebase/firestore"
 import Header from "../components/layouts/Header"
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type MyBlogList = {
   id: string, title: string, desc: string, imageLink: string
@@ -62,7 +63,9 @@ export default function Home() {
             <div className="card-footer d-flex justify-content-end gap-2">
               <button className="btn btn-sm btn-danger" onClick={ () => deleteBlog(item?.id)}>Remove</button>
               <button className="btn btn-sm btn-warning">Edit</button>
-              <button className="btn btn-sm btn-primary">Read More</button>
+              <Link href={`/blogs/${item?.id}`}>
+                <a className="btn btn-sm btn-primary">Read More</a>
+              </Link>
             </div>
           </div>
         </div>
