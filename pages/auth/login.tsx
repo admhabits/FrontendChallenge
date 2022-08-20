@@ -12,6 +12,7 @@ export default function login() {
     axios.post('https://reqres.in/api/login', {email, password: pass})
     .then(res => {
         console.log(res.data);
+        window.localStorage.setItem('user', JSON.stringify(res.data));
         window.location.href = "/";
     })
     .catch(error => {

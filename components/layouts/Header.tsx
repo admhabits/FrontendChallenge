@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router"
 
-export default function Header({title} : any) {
+export default function Header({title, isHide} : any) {
     const router = useRouter();
+    const setLogout = () => {
+      window.localStorage.removeItem('user');
+      window.location.reload();
+    }
   return (
     <>
     <div>
@@ -26,7 +30,15 @@ export default function Header({title} : any) {
           <input type="search" placeholder="Search..." className="form-control" style={{ width: '300px' }}/>
           )
       }
-          <button type="button" className="btn btn-primary btn-sm active px-3">Logout</button>
+          {
+            isHide ? (
+              <button type="button"  onClick={setLogout} className="btn btn-danger btn-sm active px-3">Exit</button>
+            ) : (
+              <Link href={"/auth/login"}>
+                <button className="btn btn-primary btn-sm active px-3">Masuk</button>
+              </Link>
+            )
+          }
       </div>
       <div className='row'>
         <div className='col-md-12 d-flex justify-content-start'>

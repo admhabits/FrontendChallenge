@@ -1,7 +1,7 @@
 import { database } from "../services/FirebaseConfig"
 import { collection, getDocs, query, where, doc, deleteDoc } from "firebase/firestore"
 import Header from "../components/layouts/Header"
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,8 +9,9 @@ type MyBlogList = {
   id: string, title: string, desc: string, imageLink: string
 }
 
-export default function Home() {
+export default function Home(props: any) {
  const [blogs, setBlogs] = useState<MyBlogList[]>([]);
+ const [isLoggedIn, setIsLoggedIn] = useState(false);
  const ref = collection(database, 'blogs');
  const getPosts = async () => {
     try {
@@ -39,6 +40,26 @@ export default function Home() {
   }
  }
 
+ useLayoutEffect(() => {
+  if(localStorage.getItem('user') !== null){
+      const items : any = localStorage.getItem("user");
+      const parseItem = JSON.parse(items);
+      console.log(parseItem);
+      if(parseItem.token == null){
+        setIsLoggedIn(false);
+        // window.location.href = '/auth/login';
+      } else {
+        setIsLoggedIn(true);
+      }
+  } else {
+    // window.location.href = '/auth/login';
+    setIsLoggedIn(false);
+    window.localStorage.setItem('user', JSON.stringify({ 
+      token: null
+    }));
+  }
+ }, [])
+
  useEffect(() => {
     getPosts();
  }, [])
@@ -46,7 +67,7 @@ export default function Home() {
  
   return (
     <div className="container mt-2 p-3">
-      <Header title="Semua Postingan"/>
+      <Header title="Semua Postingan" isHide={isLoggedIn}/>
       <div className="row">
         {
           blogs.length === 0 && (
@@ -62,10 +83,16 @@ export default function Home() {
             <div className="card-header">{item?.title}</div>
             <div className="card-body">{item?.desc.length >= 100 ? item.desc.slice(0, 120) + "...": item.desc}</div>
             <div className="card-footer d-flex justify-content-end gap-2">
-              <button className="btn btn-sm btn-danger" onClick={ () => deleteBlog(item?.id)}>Remove</button>
-              <Link href={`/blogs/edit/${item?.id}?title=${item?.title}&desc=${item?.desc}&imageLink=${item?.imageLink}`}>
-                <a className="btn btn-sm btn-warning">Edit</a>
-              </Link>
+              {
+                isLoggedIn && (
+                  <>
+                     <button className="btn btn-sm btn-danger" onClick={ () => deleteBlog(item?.id)}>Remove</button>
+                    <Link href={`/blogs/edit/${item?.id}?title=${item?.title}&desc=${item?.desc}&imageLink=${item?.imageLink}`}>
+                      <a className="btn btn-sm btn-warning">Edit</a>
+                    </Link>
+                  </>
+                )
+              }
               <Link href={`/blogs/${item?.id}`}>
                 <a className="btn btn-sm btn-primary">Read More</a>
               </Link>

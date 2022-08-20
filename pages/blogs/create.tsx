@@ -1,14 +1,38 @@
 import { addDoc, collection } from 'firebase/firestore';
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import Header from '../../components/layouts/Header';
 import { database } from '../../services/FirebaseConfig';
 
 export default function create_post() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dbInstance = collection(database, 'blogs');
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [imageLink, setImageLink] = useState("");
 
+  
+ useLayoutEffect(() => {
+  if(localStorage.getItem('user') !== null){
+      const items : any = localStorage.getItem("user");
+      const parseItem = JSON.parse(items);
+      console.log(parseItem);
+      if(parseItem.token == null){
+        setIsLoggedIn(false);
+        window.location.href = '/auth/login';
+      } else {
+        setIsLoggedIn(true);
+      }
+  } else {
+    window.location.href = '/auth/login';
+    setIsLoggedIn(false);
+    window.localStorage.setItem('user', JSON.stringify({ 
+      token: null
+    }));
+  }
+ }, [])
+
+
+ 
   const createPost = () => {
     addDoc(dbInstance, { title, imageLink, desc })
     .then(()=> {
@@ -24,7 +48,7 @@ export default function create_post() {
   }
   return (
     <div className='container mt-1 p-3'>
-      <Header title="Buat Postingan"/>
+      <Header title="Buat Postingan" isHide={isLoggedIn}/>
       <div className="row mb-3">
         <div className="col-md-6 mb-3">
           <input type="text" className="form-control" id="title" onChange={(e) => setTitle(e.target.value)} value={title} placeholder="Judul Postingan"/>
