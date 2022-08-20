@@ -4,19 +4,19 @@ import { database } from '../../../services/FirebaseConfig'
 import { useRouter } from 'next/router';
 import Header from '../../../components/layouts/Header';
 
-export default function Edit() {
+export default function EditBlogs() {
   const router = useRouter();
   const { id } = router.query;
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [imageLink, setImageLink] = useState("");
-  const [dataDetail, setDataDetail] = useState(null);
-  const docRef = doc(database, 'blogs', id);
+  const docRef = doc(database, "blogs", id);
 
   const updatePost = () => {
     updateDoc(docRef, { title, imageLink, desc })
     .then(()=> {
       console.log({ title, imageLink, desc });
+       window.location.href = "/";
       alert('Berhasil Update Postingan! ' + id);
     })
     .catch(error => {
@@ -25,25 +25,20 @@ export default function Edit() {
   }
 
   const getDetailBlogs = async () => {
-    try {
-        const docSnap = await getDoc(docRef);
-        if(docSnap.exists()){
-          console.log(docSnap.data());
-          setDataDetail(docSnap.data());
-        } else {
-          alert('Tidak ditemukan data!');
-        }
-    } catch (error) {
-      alert(error)
-    }
+    const { title, desc, imageLink } = router.query;
+    setTitle(title);
+    setDesc(desc);
+    setImageLink(imageLink);
+
   }
-  useEffect(() => {
+  useEffect( async () => {
     getDetailBlogs();
-  }, [id])
+   
+  }, [])
   
   return (
     <div className='container p-3 mt-1'>
-        <Header title={`Edit Postingan ${id}`}/>
+        <Header title={`Edit Postingan`}/>
         <div className="row mb-3">
         <div className="col-md-6 mb-3">
           <input type="text" className="form-control" id="title" onChange={(e) => setTitle(e.target.value)} value={title} placeholder="Judul Postingan"/>
@@ -59,7 +54,7 @@ export default function Edit() {
       </div>
       <div className='row mt-3'>
         <div className='col-12 d-flex justify-content-end'>
-          <button type='submit' className="btn btn-md btn-primary" onClick={updatePost}>update Postingan</button>
+          <button type='submit' className="btn btn-md btn-primary" onClick={updatePost}>Update Postingan</button>
         </div>
       </div>
     </div>

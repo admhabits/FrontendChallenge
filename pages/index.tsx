@@ -62,7 +62,7 @@ export default function Home() {
             <div className="card-body">{item?.desc.length >= 100 ? item.desc.slice(0, 120) + "...": item.desc}</div>
             <div className="card-footer d-flex justify-content-end gap-2">
               <button className="btn btn-sm btn-danger" onClick={ () => deleteBlog(item?.id)}>Remove</button>
-              <Link href={`/blogs/edit/${item?.id}`}>
+              <Link href={`/blogs/edit/${item?.id}?title=${item?.title}&desc=${item?.desc}&imageLink=${item?.imageLink}`}>
                 <a className="btn btn-sm btn-warning">Edit</a>
               </Link>
               <Link href={`/blogs/${item?.id}`}>
