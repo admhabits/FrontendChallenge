@@ -9,7 +9,7 @@ type MyBlogList = {
   id: string, title: string, desc: string, imageLink: string
 }
 
-export default function Home(props: any) {
+export default function Home() {
  const [blogs, setBlogs] = useState<MyBlogList[]>([]);
  const [isLoggedIn, setIsLoggedIn] = useState(false);
  const ref = collection(database, 'blogs');
@@ -41,7 +41,7 @@ export default function Home(props: any) {
  }
 
  useLayoutEffect(() => {
-  if(localStorage.getItem('user') !== null){
+  if(window.localStorage.getItem('user') !== null){
       const items : any = localStorage.getItem("user");
       const parseItem = JSON.parse(items);
       console.log(parseItem);
