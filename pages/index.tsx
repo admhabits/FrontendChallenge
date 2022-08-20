@@ -3,6 +3,7 @@ import { collection, getDocs, query, where, doc, deleteDoc } from "firebase/fire
 import Header from "../components/layouts/Header"
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
 
 type MyBlogList = {
   id: string, title: string, desc: string, imageLink: string

@@ -7,10 +7,12 @@ import '../styles/globals.css'
 
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux';
+import { login, logout } from '../features/authslices';
 
 export const store = configureStore({
     reducer: {
-
+      login: login,
+      logout: logout
     }
 })
 
