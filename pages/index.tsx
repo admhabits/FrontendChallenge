@@ -29,7 +29,7 @@ export default function Home() {
 
  const deleteBlog = async (id : any) => {
   try {
-      const deletebyId = await deleteDoc(doc(database, 'blogs', id));
+       await deleteDoc(doc(database, 'blogs', id));
       // console.log(deletebyId);
       getPosts();
 
@@ -62,7 +62,9 @@ export default function Home() {
             <div className="card-body">{item?.desc.length >= 100 ? item.desc.slice(0, 120) + "...": item.desc}</div>
             <div className="card-footer d-flex justify-content-end gap-2">
               <button className="btn btn-sm btn-danger" onClick={ () => deleteBlog(item?.id)}>Remove</button>
-              <button className="btn btn-sm btn-warning">Edit</button>
+              <Link href={`/blogs/edit/${item?.id}`}>
+                <a className="btn btn-sm btn-warning">Edit</a>
+              </Link>
               <Link href={`/blogs/${item?.id}`}>
                 <a className="btn btn-sm btn-primary">Read More</a>
               </Link>
