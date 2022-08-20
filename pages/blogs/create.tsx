@@ -18,7 +18,7 @@ export default function create_post() {
     })
   }
   return (
-    <div className='container mt-2 p-3'>
+    <div className='container mt-1 p-3'>
       <Header title="Buat Postingan"/>
       <div className="row mb-3">
         <div className="col-md-6">
@@ -31,6 +31,11 @@ export default function create_post() {
       <div className="row">
         <div className="col-12">
           <textarea className='form-control' data-sb-validation="required" placeholder='Deskripsi' rows={8}></textarea>
+        </div>
+      </div>
+      <div className='row mt-3'>
+        <div className='col-12 d-flex justify-content-end'>
+          <button type='submit' className="btn btn-md btn-primary">Simpan Postingan</button>
         </div>
       </div>
     </div>
