@@ -47,7 +47,7 @@ export default function Home() {
           <div className="col-md-6 col-sm-12 col-lg-4 mb-lg-4 mb-md-3 mb-sm-2">
           <div className="card">
             <div className="card-header">{item?.title}</div>
-            <div className="card-body">{item?.desc}</div>
+            <div className="card-body">{item?.desc.length >= 100 ? item.desc.slice(0, 120) + "...": item.desc}</div>
             <div className="card-footer d-flex justify-content-end gap-2">
               <button className="btn btn-sm btn-danger">Remove</button>
               <button className="btn btn-sm btn-warning">Edit</button>
